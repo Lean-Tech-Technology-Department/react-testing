@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { TextField, Button } from '@material-ui/core'
+import { LoginPage } from './styles'
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -16,33 +17,40 @@ const Login = () => {
   const handleLogin = () => {}
 
   return (
-    <div>
-      <form autoComplete="off">
+    <LoginPage>
+      <form className="form" autoComplete="off">
         <h1>Welcome!</h1>
-        <TextField
-          required
-          id="username"
-          value={credentials.username}
-          onChange={handleChange('name')}
-          label="Username"
-          variant="outlined"
-          inputProps={{
-            'data-testid': 'd'
-          }}
-        />
-        <TextField
-          required
-          id="password"
-          value={credentials.password}
-          onChange={handleChange('password')}
-          label="Password"
-          variant="outlined"
-        />
-        <Button variant="contained" color="primary" onClick={handleLogin}>
+        <div className="input">
+          <TextField
+            required
+            id="username"
+            value={credentials.username}
+            onChange={handleChange('username')}
+            label="Username"
+            variant="outlined"
+            inputProps={{
+              'data-testid': 'd'
+            }}
+            style={{ width: '100%' }}
+          />
+        </div>
+        <div className="input">
+          <TextField
+            required
+            id="password"
+            value={credentials.password}
+            onChange={handleChange('password')}
+            label="Password"
+            variant="outlined"
+            type="password"
+            style={{ width: '100%' }}
+          />
+        </div>
+        <Button variant="contained" color="primary" onClick={handleLogin} style={{ width: '100%' }}>
           Login
         </Button>
       </form>
-    </div>
+    </LoginPage>
   )
 }
 
