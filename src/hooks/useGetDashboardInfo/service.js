@@ -1,8 +1,13 @@
-import { Fetch } from '../../utils/fetch'
-import { routes } from './routes'
-
 const fetchDashboardInfo = () => {
-  return Fetch('get', routes.dashboardInfo)
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ 
+        data: [],
+        title: 'Dashboard',
+        availableTrucksAmount: 1
+      })
+    }, 2000)
+  })
 }
 
 export { fetchDashboardInfo }

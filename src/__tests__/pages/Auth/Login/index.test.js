@@ -1,9 +1,9 @@
 import React from 'react'
 import { fireEvent, waitFor } from '@testing-library/react'
 import * as loginActions from '../../../../redux/auth/login/actions'
-import { renderWithProviders, TestProviders } from '../../../utils'
+import { renderWithProviders, TestProviders } from '../../../../utils/tests'
 import Login from '../../../../pages/Auth/Login'
-import { credentialsMock } from '../../../utils/mocks'
+import { credentialsMock } from '../../../../utils/tests/mocks'
 
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({

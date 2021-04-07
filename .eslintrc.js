@@ -15,6 +15,7 @@ module.exports = {
   plugins: ['react', 'jest', 'prettier'],
   rules: {
     'comma-dangle': ['error', 'never'],
-    'space-before-function-paren': ['error', 'never']
+    'space-before-function-paren': ['error', 'never'],
+    "react/prop-types": "off"
   }
 }

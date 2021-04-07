@@ -1,6 +1,6 @@
 import * as actions from '../../../../redux/auth/login/actions'
 import { LOGIN_TYPES } from '../../../../redux/auth/login/types'
-import { credentialsMock, errorMock, userMock } from '../../../utils/mocks'
+import { credentialsMock, errorMock, userMock } from '../../../../utils/tests/mocks'
 
 describe('Login actions', () => {
   it('the login action returns the expected structure', () => {

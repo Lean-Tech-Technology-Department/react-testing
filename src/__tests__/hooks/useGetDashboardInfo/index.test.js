@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks'
 import { useGetDashboardInfo } from '../../../hooks/useGetDashboardInfo'
 import * as service from '../../../hooks/useGetDashboardInfo/service'
-import { errorMock } from '../../utils/mocks'
+import { errorMock } from '../../../utils/tests/mocks'
 
 jest.spyOn(service , 'fetchDashboardInfo')
 

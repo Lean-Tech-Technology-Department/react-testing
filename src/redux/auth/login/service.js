@@ -1,8 +1,7 @@
-import { Fetch } from '../../../utils/fetch'
-import { routes } from './routes'
-
-const login = (payload) => {
-  return Fetch('post', routes.login, payload)
+export const login = (payload) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ data: { token: 'abc123', name: 'My User' } })
+    }, 2000)
+  })
 }
-
-export { login }

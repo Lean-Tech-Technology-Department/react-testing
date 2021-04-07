@@ -1,6 +1,6 @@
 import reducer, { initialState } from '../../../../redux/auth/login/reducer'
 import * as actions from '../../../../redux/auth/login/actions'
-import { errorMock, userMock } from '../../../utils/mocks'
+import { errorMock, userMock } from '../../../../utils/tests/mocks'
 
 describe('Login Reducer', () => {
   it('is initialized with the initial state', () => {
@@ -11,7 +11,7 @@ describe('Login Reducer', () => {
 
     expect(reducer(initialState, actions.login())).toEqual({
       ...initialState,
-      user: {},
+      user: null,
       loading: true
     })
   })

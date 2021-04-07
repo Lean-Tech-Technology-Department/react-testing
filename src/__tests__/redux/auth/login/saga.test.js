@@ -1,8 +1,8 @@
-import { recordSaga } from '../../../utils'
+import { recordSaga } from '../../../../utils/tests'
 import * as actions from '../../../../redux/auth/login/actions'
 import * as service from '../../../../redux/auth/login/service'
 import * as saga from '../../../../redux/auth/login/saga'
-import { errorMock, userMock } from '../../../utils/mocks'
+import { errorMock, userMock } from '../../../../utils/tests/mocks'
 
 jest.spyOn(service , 'login')
 
