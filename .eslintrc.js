@@ -2,7 +2,8 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    'jest/globals': true
+    'jest/globals': true,
+    'cypress/globals': true
   },
   extends: ['plugin:react/recommended', 'standard', 'eslint:recommended', 'prettier'],
   parserOptions: {
@@ -12,7 +13,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: ['react', 'jest', 'prettier'],
+  plugins: ['react', 'jest', 'prettier', 'cypress'],
   rules: {
     'comma-dangle': ['error', 'never'],
     'space-before-function-paren': ['error', 'never']

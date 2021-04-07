@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { TextField, Button } from '@material-ui/core'
+import { useHistory } from 'react-router'
 
-const Login = () => {
+export const Login = () => {
+  const history = useHistory()
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -13,7 +15,11 @@ const Login = () => {
       [name]: event.target.value
     }))
 
-  const handleLogin = () => {}
+  const handleLogin = () => {
+    if (credentials.username === 'test@gmail.com' && credentials.password === '123456') {
+      history.push('/home')
+    }
+  }
 
   return (
     <div>
@@ -21,7 +27,7 @@ const Login = () => {
         <h1>Welcome!</h1>
         <TextField
           required
-          id="username"
+          id="loginUsernameInput"
           value={credentials.username}
           onChange={handleChange('name')}
           label="Username"
@@ -32,13 +38,13 @@ const Login = () => {
         />
         <TextField
           required
-          id="password"
+          id="loginPasswordInput"
           value={credentials.password}
           onChange={handleChange('password')}
           label="Password"
           variant="outlined"
         />
-        <Button variant="contained" color="primary" onClick={handleLogin}>
+        <Button variant="contained" color="primary" onClick={handleLogin} id="loginButton">
           Login
         </Button>
       </form>
