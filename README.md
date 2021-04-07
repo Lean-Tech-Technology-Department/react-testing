@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Merge Coverage Cypress-Jest
+
+You can find how to do it here: [https://mdluo.com/jest-with-cypress-coverage-for-full-stack-web-applications](https://mdluo.com/jest-with-cypress-coverage-for-full-stack-web-applications)
+
+### Generate merged coverage report
+
+Just have to run the following command in order
+
+```bash
+    npm run test
+    npm run cypress:run
+    npm run cover:final
+```
