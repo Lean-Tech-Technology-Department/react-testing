@@ -29,7 +29,8 @@
     "precover": "mv coverage/coverage-final.json .nyc_output",
     "cover:merge": "nyc merge .nyc_output coverage/coverage.json",
     "cover:report": "nyc report --reporter=lcov --reporter=text-summary",
-    "cover:final": "npm run precover && npm run cover:merge && npm run cover:report"
+    "cover:final": "npm run precover && npm run cover:merge && npm run cover:report",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +50,11 @@
       "last 1 safari version"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.4",
     "babel-plugin-istanbul": "^6.0.0",
@@ -64,6 +70,8 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-sonarjs": "^0.6.0",
+    "husky": "^6.0.0",
     "istanbul-lib-coverage": "^3.0.0",
     "nyc": "^15.1.0",
     "prettier": "^2.2.1"

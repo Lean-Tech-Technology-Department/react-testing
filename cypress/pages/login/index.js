@@ -6,11 +6,11 @@ const PASSWORD = '123456'
 const WRONG_PASSWORD = '654321'
 
 export const userSuccessfulLogin = () => {
-  const usernameInput = actions.setLoginUsernameInputValue(USERNAME)
-  usernameInput.should('have.value', USERNAME).should('exist')
+  actions.setLoginUsernameInputValue(USERNAME)
+  actions.checkLoginUsernameInputValue(USERNAME)
 
-  const passwordInput = actions.setLoginPasswordInputValue(PASSWORD)
-  passwordInput.should('have.value', PASSWORD).should('exist')
+  actions.setLoginPasswordInputValue(PASSWORD)
+  actions.checkLoginPasswordInputValue(PASSWORD)
 
   const button = actions.getLoginButton()
   button.should('exist').click()
@@ -20,11 +20,11 @@ export const userSuccessfulLogin = () => {
 }
 
 export const userFailedLogin = () => {
-  const usernameInput = actions.setLoginUsernameInputValue(USERNAME)
-  usernameInput.should('have.value', USERNAME).should('exist')
+  actions.setLoginUsernameInputValue(USERNAME)
+  actions.checkLoginUsernameInputValue(USERNAME)
 
-  const passwordInput = actions.setLoginPasswordInputValue(WRONG_PASSWORD)
-  passwordInput.should('have.value', WRONG_PASSWORD).should('exist')
+  actions.setLoginPasswordInputValue(WRONG_PASSWORD)
+  actions.checkLoginPasswordInputValue(WRONG_PASSWORD)
 
   const button = actions.getLoginButton()
   button.should('exist').click()

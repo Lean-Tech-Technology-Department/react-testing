@@ -19,3 +19,11 @@ export const setLoginUsernameInputValue = (value) => {
 export const setLoginPasswordInputValue = (value) => {
   return getLoginPasswordInput().type(value)
 }
+
+export const checkLoginUsernameInputValue = (value) => {
+  return getLoginUsernameInput().type(value).should('have.value', value).should('exist')
+}
+
+export const checkLoginPasswordInputValue = (value) => {
+  return getLoginPasswordInput().type(value).should('have.value', value).should('exist')
+}

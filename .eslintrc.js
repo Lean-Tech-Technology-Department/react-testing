@@ -5,7 +5,7 @@ module.exports = {
     'jest/globals': true,
     'cypress/globals': true
   },
-  extends: ['plugin:react/recommended', 'standard', 'eslint:recommended', 'prettier'],
+  extends: ['plugin:react/recommended', 'standard', 'eslint:recommended', 'plugin:sonarjs/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -13,9 +13,15 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: ['react', 'jest', 'prettier', 'cypress'],
+  plugins: ['react', 'jest', 'cypress', 'sonarjs'],
   rules: {
     'comma-dangle': ['error', 'never'],
-    'space-before-function-paren': ['error', 'never']
+    'space-before-function-paren': ['error', 'never'],
+    quotes: ['error', 'single']
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 }
