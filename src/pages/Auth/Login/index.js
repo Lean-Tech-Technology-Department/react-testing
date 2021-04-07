@@ -18,6 +18,8 @@ export const Login = () => {
   const handleLogin = () => {
     if (credentials.username === 'test@gmail.com' && credentials.password === '123456') {
       history.push('/home')
+    } else {
+      history.push('/auth/login')
     }
   }
 
@@ -29,7 +31,7 @@ export const Login = () => {
           required
           id="loginUsernameInput"
           value={credentials.username}
-          onChange={handleChange('name')}
+          onChange={handleChange('username')}
           label="Username"
           variant="outlined"
           inputProps={{

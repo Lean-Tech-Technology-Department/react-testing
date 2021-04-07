@@ -8,4 +8,8 @@ describe('Login E2E tests', () => {
   it('should user logged in successfully', () => {
     pages.userSuccessfulLogin()
   })
+
+  it('should user failed to log in', () => {
+    pages.userFailedLogin()
+  })
 })
