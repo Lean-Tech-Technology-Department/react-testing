@@ -1,4 +1,4 @@
-import { takeEvery, call, put } from 'redux-saga/effects'
+import { takeEvery, call, put, all } from 'redux-saga/effects'
 import { LOGIN_TYPES } from './types'
 import * as loginActions from './actions'
 import { login } from './service'
@@ -12,6 +12,12 @@ export function* onLogin({ payload }) {
   }
 }
 
+function * onHandleLogin() {
+  yield takeEvery(LOGIN_TYPES.LOGIN_USER, onLogin)
+}
+
 export function * loginSaga() {
-  yield takeEvery(LOGIN_TYPES.LOGIN, onLogin)
+  yield all([
+    call(onHandleLogin)
+  ])
 }

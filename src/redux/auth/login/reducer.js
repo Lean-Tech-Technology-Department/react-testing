@@ -1,7 +1,8 @@
 import { LOGIN_TYPES } from './types'
-const initialState = {
+export const initialState = {
   user: {},
-  loading: false
+  loading: false,
+  error: ''
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -10,10 +11,10 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, user: {}, loading: true }
     }
     case LOGIN_TYPES.LOGIN_USER_SUCCESS: {
-      return { ...state, user: {}, loading: false }
+      return { ...state, user: payload, loading: false }
     }
     case LOGIN_TYPES.LOGIN_USER_FAILURE: {
-      return { ...state, user: {}, loading: false }
+      return { ...state, error: payload, loading: false }
     }
     default: {
       return state
