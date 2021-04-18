@@ -17,7 +17,8 @@ module.exports = {
   rules: {
     'comma-dangle': ['error', 'never'],
     'space-before-function-paren': ['error', 'never'],
-    quotes: ['error', 'single']
+    quotes: ['error', 'single'],
+    'react/prop-types': 'off'
   },
   settings: {
     react: {

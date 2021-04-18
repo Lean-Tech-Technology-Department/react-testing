@@ -82,3 +82,11 @@ Just have to run the following command in order
     npm run cypress:run
     npm run cover:final
 ```
+
+### Initialize husky
+
+Set a new npm script in your package.json file
+
+```
+   "prepare": "husky install"
+```
