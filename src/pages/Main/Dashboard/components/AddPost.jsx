@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal, Backdrop, Fade } from '@material-ui/core'
+import { Button, Modal, Backdrop } from '@material-ui/core'
 const AddPost = () => {
   const [open, setOpen] = useState(false)
   return (
@@ -7,7 +7,7 @@ const AddPost = () => {
       <Button />
       <Modal
         open={open}
-        onClose={() => null}
+        onClose={() => setOpen(false)}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
