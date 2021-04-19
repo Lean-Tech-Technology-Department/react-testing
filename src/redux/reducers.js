@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
 import loginReducer from './auth/login/reducer'
+import postsReducer from './posts/reducer'
 import { LOGIN_TYPES } from './auth/login/types'
 
 const rootReducer = combineReducers({
-  loginReducer
+  loginReducer, postsReducer
 })
 
 const resetEnhancer = (_rootReducer) => (state, action) => {
