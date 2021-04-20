@@ -1,6 +1,6 @@
 import { POSTS_TYPES } from './types'
 
-export const getPosts = () => ({
+export const getPosts = (onSuccess, onError) => ({
   type: POSTS_TYPES.GET_POSTS
 })
 
@@ -17,8 +17,8 @@ export const getPostsFailure = (payload) => {
     payload
   }
 }
-export const createPosts = () => ({
-  type: POSTS_TYPES.CREATE_POST
+export const createPosts = (payload, onSuccess, onError) => ({
+  type: POSTS_TYPES.CREATE_POST, payload, onSuccess, onError
 })
 
 export const createPostSuccess = (payload) => {
@@ -35,8 +35,8 @@ export const createPostFailure = (payload) => {
   }
 }
 
-export const updatePosts = () => ({
-  type: POSTS_TYPES.UPDATE_POST
+export const updatePost = (payload, onSuccess, onError) => ({
+  type: POSTS_TYPES.UPDATE_POST, payload, onSuccess, onError
 })
 
 export const updatePostSuccess = (payload) => {
@@ -53,8 +53,8 @@ export const updatePostFailure = (payload) => {
   }
 }
 
-export const deletePosts = () => ({
-  type: POSTS_TYPES.DELETE_POST
+export const deletePost = (payload, onSuccess, onError) => ({
+  type: POSTS_TYPES.DELETE_POST, payload, onSuccess, onError
 })
 
 export const deletePostSuccess = (payload) => {

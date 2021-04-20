@@ -25,7 +25,6 @@ export const userFailedLogin = () => {
 
   actions.setLoginPasswordInputValue(WRONG_PASSWORD)
   actions.checkLoginPasswordInputValue(WRONG_PASSWORD)
-  console.log('sss')
   const button = actions.getLoginButton()
   button.should('exist').click()
   cy.wait(1000).then(() => {

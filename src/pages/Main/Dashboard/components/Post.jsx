@@ -1,39 +1,69 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, CardHeader, CardContent, Typography, makeStyles } from '@material-ui/core'
 import MoreOptionsMenu from '../../../../components/MoreOptionsMenu'
+import AddOrUpdateModal from './AddOrUpdateModal'
 
 const useStyles = makeStyles(() => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 500,
+    width: '100%',
     marginBottom: 10
   }
 }))
 
-const menuOptions = [{
-  text: 'Edit',
-  callback: () => null
-}, {
-  text: 'Delete',
-  callback: () => null
-}]
+const menuOptions = (id, onEdit, onDelete) => [
+  {
+    text: 'Edit',
+    callback: () => onEdit(),
+    testID: 'PostEditOption'
+  },
+  {
+    text: 'Delete',
+    callback: () => onDelete(id),
+    testID: 'PostDeleteOption'
+  }
+]
 
-const Post = ({ post }) => {
+const Post = ({ post, onEdit, onDelete, loading, testID }) => {
+  const [open, setOpen] = useState(false)
   const styles = useStyles()
+  const [values, setValues] = useState(post)
+
+  const handleOnChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value })
+  }
+
+  const onSubmit = () => {
+    onEdit(values, () => setOpen(false))
+  }
+
   return (
-    <Card className={styles.root}>
-      <CardHeader
-      title={post.title}
-        action={
-          <MoreOptionsMenu options={menuOptions}/>
-        }
-        titleTypographyProps={{ variant: 'body2', component: 'p' }}
+    <>
+      <Card className={styles.root} {...{ 'data-testid': testID }}>
+        <CardHeader
+          title={post.title}
+          action={<MoreOptionsMenu options={menuOptions(post.id, () => setOpen(true), onDelete)} />}
+          titleTypographyProps={{ variant: 'body2', component: 'p' }}
+        />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {post.body}
+          </Typography>
+          <Typography {...{ 'data-testid': 'PostID' }}variant="body2" color="textSecondary" component="p" style={{ fontWeight: 500 }}>
+            ID: {post.id}
+          </Typography>
+        </CardContent>
+      </Card>
+      <AddOrUpdateModal
+        testID={`${testID}UpdateModal`}
+        open={open}
+        values={values}
+        handleOnChange={handleOnChange}
+        onSubmit={onSubmit}
+        loading={loading}
+        setOpen={setOpen}
       />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {post.body}
-        </Typography>
-      </CardContent>
-    </Card>
+    </>
   )
 }
 
