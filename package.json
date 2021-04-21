@@ -29,7 +29,7 @@
     "prepare": "husky install",
     "test": "craco test src --watchAll=false --coverage",
     "test:showConfig": "craco test --showConfig ",
-    "cypress:open": ".cypress open",
+    "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "precover": "mv coverage/coverage-final.json .nyc_output",
     "cover:merge": "nyc merge .nyc_output coverage/coverage.json",
