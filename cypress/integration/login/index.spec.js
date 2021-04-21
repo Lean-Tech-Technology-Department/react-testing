@@ -1,7 +1,8 @@
+import { getDashboardView } from '../../actions/posts'
 import * as pages from './../../pages/login'
 
 describe('Login E2E tests', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('/')
   })
 
@@ -10,6 +11,8 @@ describe('Login E2E tests', () => {
   })
 
   it('should user failed to log in', () => {
+    cy.visit('/')
     pages.userFailedLogin()
+    getDashboardView().should('exist')
   })
 })

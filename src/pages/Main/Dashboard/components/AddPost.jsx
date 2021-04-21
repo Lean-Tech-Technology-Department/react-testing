@@ -21,7 +21,7 @@ const AddPost = ({ loading, onPostCreation }) => {
 
   return (
     <>
-      <Button onClick={() => handleOpen(true)} color="primary" variant="contained">
+      <Button onClick={() => handleOpen(true)} color="primary" variant="contained" {...{ 'data-testid': 'AddPostButton' }}>
         Add Post
       </Button>
       <AddOrUpdateModal

@@ -15,7 +15,7 @@ const MoreOptionsMenu = ({ options }) => {
   }
   return (
     <div>
-      <IconButton aria-label="settings" onClick={handleClick}>
+      <IconButton aria-label="settings" onClick={handleClick} {...{ 'data-testid': 'MoreOptionsIcon' }}>
         <MoreVertIcon />
       </IconButton>
       <Menu options={options} anchoEL={anchorEl} handleClose={handleClose}/>

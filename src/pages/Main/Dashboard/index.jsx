@@ -23,14 +23,12 @@ const Dashboard = () => {
 
   const addNewPost = useCallback((payload, onSuccess, onError) => {
     dispatch(createPosts(payload, () => {
-      alert('Post created')
       onSuccess()
     }, onError))
   }, [])
 
   const updateCurrentPost = useCallback((payload, onSuccess) => {
     dispatch(updatePost(payload, () => {
-      alert('Post updated')
       onSuccess()
     }, () => alert('Post couldn\'t be updated')))
   }, [])

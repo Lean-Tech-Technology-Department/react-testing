@@ -64,7 +64,7 @@ const Login = () => {
           />
         </div>
         {Boolean(error) && <Typography role="error" variant="subtitle1" gutterBottom color="error">{error}</Typography>}
-        <Button variant="contained" color="primary" onClick={handleLogin} style={{ width: '100%' }}>
+        <Button variant="contained" color="primary" onClick={handleLogin} style={{ width: '100%' }} {...{ 'data-testid': 'loginButton' }}>
           {loading ? <CircularProgress color="secondary" size={20} /> : 'Login'}
         </Button>
       </form>

@@ -1,4 +1,4 @@
-import { getElement } from './../../pages/general'
+import { getElement } from './../general'
 
 export const getLoginUsernameInput = () => {
   return getElement('loginUsernameInput')
@@ -21,9 +21,9 @@ export const setLoginPasswordInputValue = (value) => {
 }
 
 export const checkLoginUsernameInputValue = (value) => {
-  return getLoginUsernameInput().type(value).should('have.value', value).should('exist')
+  return setLoginUsernameInputValue(value).should('have.value', value).should('exist')
 }
 
 export const checkLoginPasswordInputValue = (value) => {
-  return getLoginPasswordInput().type(value).should('have.value', value).should('exist')
+  return setLoginPasswordInputValue(value).should('have.value', value).should('exist')
 }

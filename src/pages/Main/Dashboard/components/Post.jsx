@@ -44,9 +44,10 @@ const Post = ({ post, onEdit, onDelete, loading, testID }) => {
           title={post.title}
           action={<MoreOptionsMenu options={menuOptions(post.id, () => setOpen(true), onDelete)} />}
           titleTypographyProps={{ variant: 'body2', component: 'p' }}
+          {...{ 'data-testid': 'PostTitleText' }}
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" {...{ 'data-testid': 'PostBodyText' }}>
             {post.body}
           </Typography>
           <Typography {...{ 'data-testid': 'PostID' }}variant="body2" color="textSecondary" component="p" style={{ fontWeight: 500 }}>
@@ -55,7 +56,7 @@ const Post = ({ post, onEdit, onDelete, loading, testID }) => {
         </CardContent>
       </Card>
       <AddOrUpdateModal
-        testID={`${testID}UpdateModal`}
+        testID={'DashboardPostUpdateModal'}
         open={open}
         values={values}
         handleOnChange={handleOnChange}
