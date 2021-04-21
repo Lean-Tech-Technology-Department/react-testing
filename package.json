@@ -3,25 +3,39 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.1",
     "@material-ui/core": "4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "5.11.10",
     "@testing-library/react": "11.2.6",
     "@testing-library/user-event": "12.8.3",
+    "@types/cypress": "^1.1.3",
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-redux": "7.2.3",
+    "react-redux": "^7.2.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
     "redux": "4.0.5",
     "redux-saga": "1.1.3",
+    "reselect": "^4.0.0",
     "styled-components": "5.2.3",
     "web-vitals": "1.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "prepare": "husky install",
+    "test": "craco test src --watchAll=false --coverage",
+    "test:showConfig": "craco test --showConfig ",
+    "cypress:open": "./node_modules/.bin/cypress open",
+    "cypress:run": "./node_modules/.bin/cypress run",
+    "precover": "mv coverage/coverage-final.json .nyc_output",
+    "cover:merge": "nyc merge .nyc_output coverage/coverage.json",
+    "cover:report": "nyc report --reporter=lcov --reporter=text-summary",
+    "cover:final": "npm run precover && npm run cover:merge && npm run cover:report",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -42,15 +56,30 @@
     ]
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.4",
+    "babel-plugin-istanbul": "^6.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "cypress": "^7.0.0",
+    "@testing-library/react-hooks": "^5.1.1",
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.3.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-sonarjs": "^0.6.0",
+    "husky": "^6.0.0",
+    "istanbul-lib-coverage": "^3.0.0",
+    "nyc": "^15.1.0",
     "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

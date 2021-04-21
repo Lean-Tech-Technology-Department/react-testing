@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button, Typography, CircularProgress } from '@material-ui/core'
+import { LoginPage } from './styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../../../redux/auth/login/actions'
 
 const Login = () => {
+  const dispatch = useDispatch()
+  const { loading } = useSelector(state => state.loginReducer)
+  const [error, setError] = useState('')
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -13,36 +19,56 @@ const Login = () => {
       [name]: event.target.value
     }))
 
-  const handleLogin = () => {}
+  const handleLogin = () => {
+    if (credentials.username && credentials.password) {
+      setError('')
+      dispatch(login(credentials))
+    } else {
+      setError('The username and the password are required')
+    }
+  }
 
   return (
-    <div>
-      <form autoComplete="off">
+    <LoginPage>
+      <form className="form" autoComplete="off">
         <h1>Welcome!</h1>
-        <TextField
-          required
-          id="username"
-          value={credentials.username}
-          onChange={handleChange('name')}
-          label="Username"
-          variant="outlined"
-          inputProps={{
-            'data-testid': 'd'
-          }}
-        />
-        <TextField
-          required
-          id="password"
-          value={credentials.password}
-          onChange={handleChange('password')}
-          label="Password"
-          variant="outlined"
-        />
-        <Button variant="contained" color="primary" onClick={handleLogin}>
-          Login
+        <div className="input">
+          <TextField
+            required
+            id="username"
+            value={credentials.username}
+            onChange={handleChange('username')}
+            label="Username"
+            placeholder="Username"
+            variant="outlined"
+            inputProps={{
+              'data-testid': 'loginUsernameInput'
+            }}
+            style={{ width: '100%' }}
+          />
+        </div>
+        <div className="input">
+          <TextField
+            required
+            id="password"
+            value={credentials.password}
+            onChange={handleChange('password')}
+            label="Password"
+            placeholder="Password"
+            variant="outlined"
+            inputProps={{
+              'data-testid': 'loginPasswordInput'
+            }}
+            type="password"
+            style={{ width: '100%' }}
+          />
+        </div>
+        {Boolean(error) && <Typography role="error" variant="subtitle1" gutterBottom color="error">{error}</Typography>}
+        <Button variant="contained" color="primary" onClick={handleLogin} style={{ width: '100%' }} {...{ 'data-testid': 'loginButton' }}>
+          {loading ? <CircularProgress color="secondary" size={20} /> : 'Login'}
         </Button>
       </form>
-    </div>
+    </LoginPage>
   )
 }
 
